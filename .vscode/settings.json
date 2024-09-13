@@ -10,7 +10,7 @@
 		"**/.next": false,
 		"**/.parcel-cache": true,
 		"**/build": true,
-		"**/dist": true,
+		"**/dist": false,
 		"**/node_modules": false
 	}
 }
