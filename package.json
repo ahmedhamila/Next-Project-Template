@@ -7,7 +7,7 @@
 	},
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
+		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
 		"sitemap": "next-sitemap",
