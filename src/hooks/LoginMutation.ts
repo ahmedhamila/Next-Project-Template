@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation"
 
 import { getTokens, TokenRequest } from "@/services/authService"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { toast } from "sonner"
 
 export const useLogin = (key: string) => {
 	const queryClient = useQueryClient()
@@ -12,12 +13,13 @@ export const useLogin = (key: string) => {
 			return response
 		},
 		onError: (error: any) => {
-			console.log("error")
+			console.log(error)
+			toast.error(error?.response?.data.errors[0].detail)
 		},
 		onSuccess: async (result: any) => {
-			console.log("Successful Login")
-			router.replace(`/dashboard` as any)
+			toast.success("Login Successful")
 			await queryClient.invalidateQueries({ queryKey: [key] })
+			router.push(`/dashboard` as any)
 		}
 	})
 }
